@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "PPwUGA0h8u3kVhpAWdiCnHmuxuKcfwBLWrefXdVuIlW/bsjWN8dYnwP6r4d9ALMsXmP4pYekV7M8ob5iVlvWVQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Hp 840 g5\\Documents\\Personal Projects\\TriathlonAPI\\TriathlonApi\\TriathlonApi.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hp 840 g5\\.nuget\\packages\\fsharp.core\\8.0.100\\fsharp.core.8.0.100.nupkg.sha512"
+  ],
+  "logs": []
+}
