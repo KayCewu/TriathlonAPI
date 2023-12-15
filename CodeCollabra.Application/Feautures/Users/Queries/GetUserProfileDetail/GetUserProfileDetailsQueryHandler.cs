@@ -24,10 +24,10 @@ namespace CodeCollabra.Application.Feautures.Users.Queries.GetUserProfileDetail
                 var user = await _userRepository.GetByIdAsync(request.id);
 
                 var achievements = await _achievementsRepository.GetAllAsync();
-                achievements = achievements.Where(x => x.User.Id == request.id).ToList();
+                achievements = achievements.Where(x => x.UserId == request.id).ToList();
 
                 var points = await _pointsRepository.GetAllAsync();
-                var userPoints = points.FirstOrDefault(x => x.User.Id == request.id);
+                var userPoints = points.FirstOrDefault(x => x.UserId == request.id);
 
                 return new GetUserProfileDetailsDTO
                 {

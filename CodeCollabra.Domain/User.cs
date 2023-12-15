@@ -6,6 +6,7 @@ namespace CodeCollabra.Domain
     {
         public string Username { get; set; }
         public string Email { get; set; }
-        public string PasswordHash { get; set; }
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

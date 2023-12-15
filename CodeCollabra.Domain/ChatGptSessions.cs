@@ -9,6 +9,7 @@ namespace CodeCollabra.Domain
 {
     public class ChatGptSessions : BaseEntity
     {
+        public int UserId { get; set; }
         public User User { get; set; }
         public string Context { get; set; }
         public DateTime LastInteractionTime { get; set; }

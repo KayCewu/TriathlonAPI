@@ -21,14 +21,22 @@ namespace CodeCollabra.Infrastructure.DatabaseContext
         public DbSet<ChatParticipants> ChatParticipants { get; set; }
         public DbSet<Messages> Messages { get; set; }
         public DbSet<Points> Points { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public new DbSet<User> Users { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CodeCollabraDBContext).Assembly);
 
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ApplicationUser>().ToTable("Users");
+
+            modelBuilder.Entity<User>()
+            .HasOne(u => u.ApplicationUser)
+            .WithMany()
+            .HasForeignKey(u => u.ApplicationUserId)
+            .IsRequired(false)
+            .OnDelete(DeleteBehavior.Cascade);
         }
 
     }

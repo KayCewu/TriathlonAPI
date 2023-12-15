@@ -9,6 +9,7 @@ namespace CodeCollabra.Domain
 {
     public class Achievements : BaseEntity
     {
+        public int UserId { get; set; }
         public User User { get; set; }
         public string AchievementName { get; set; }
         public string Description { get; set; }

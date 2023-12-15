@@ -9,7 +9,9 @@ namespace CodeCollabra.Domain
 {
     public class ChatParticipantBadges : BaseEntity
     {
+        public int ChatParticiPantId { get; set; }
         public ChatParticipants Participant { get; set; }
+        public int BadgeId { get; set; }
         public Badges Badges { get; set; }
     }
 }

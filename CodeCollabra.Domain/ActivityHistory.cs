@@ -9,6 +9,7 @@ namespace CodeCollabra.Domain
 {
     public class ActivityHistory : BaseEntity
     {
+        public int UserId { get; set; }
         public User User { get; set; }
         public string ActivityType { get; set; }
         public DateTime Timestamp { get; set; }

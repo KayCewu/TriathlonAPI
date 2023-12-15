@@ -9,6 +9,7 @@ namespace CodeCollabra.Domain
 {
     public class Points : BaseEntity
     {
+        public int UserId { get; set; }
         public User User { get; set; }
         public int PointValue { get; set; }
     }
