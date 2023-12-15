@@ -1,9 +1,10 @@
 ﻿using CodeCollabra.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodeCollabra.Infrastructure.DatabaseContext
 {
-    public class CodeCollabraDBContext : DbContext
+    public class CodeCollabraDBContext : IdentityDbContext<ApplicationUser>
     {
         public CodeCollabraDBContext(DbContextOptions<CodeCollabraDBContext> options) : base(options)
         {
@@ -27,7 +28,8 @@ namespace CodeCollabra.Infrastructure.DatabaseContext
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CodeCollabraDBContext).Assembly);
 
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ApplicationUser>().ToTable("Users");
         }
-        
+
     }
 }

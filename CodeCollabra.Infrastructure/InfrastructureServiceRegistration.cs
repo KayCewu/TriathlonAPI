@@ -1,6 +1,8 @@
-﻿using CodeCollabra.Infrastructure.DatabaseContext;
+﻿using CodeCollabra.Domain;
+using CodeCollabra.Infrastructure.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CodeCollabra.Infrastructure
@@ -13,7 +15,17 @@ namespace CodeCollabra.Infrastructure
             {
                 options.UseSqlServer(configuration.GetConnectionString("DatabaseConnectionString"));
             });
-
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredLength = 8;
+                options.SignIn.RequireConfirmedAccount = true;
+            })
+           .AddEntityFrameworkStores<CodeCollabraDBContext>()
+           .AddDefaultTokenProviders();
             return services;
         }
     }
