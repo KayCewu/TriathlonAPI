@@ -1,4 +1,5 @@
-﻿using CodeCollabra.Application.Feautures.Users.Queries.GetUserProfileDetail;
+﻿using CodeCollabra.Application.Feautures.Users.Queries.GetAllUsers;
+using CodeCollabra.Application.Feautures.Users.Queries.GetUserProfileDetail;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,13 @@ namespace CodeCollabra.API.Controllers
         {
             var userProfileDetails = await _mediator.Send(new GetUserProfileDetailsQuery { id = id });
             return Ok(userProfileDetails);
+        }
+
+        [HttpGet("GetAllUsers")]
+        public async Task<ActionResult<List<GetAllUsersDTO>>> GetAllUsers()
+        {
+            var allUsers = await _mediator.Send(new GetAllUsersQuery { });
+            return Ok(allUsers);
         }
 
         
