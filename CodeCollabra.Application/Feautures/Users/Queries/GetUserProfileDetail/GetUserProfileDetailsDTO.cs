@@ -1,0 +1,17 @@
+﻿using CodeCollabra.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CodeCollabra.Application.Feautures.Users.Queries.GetUserProfileDetail
+{
+    public class GetUserProfileDetailsDTO
+    {
+        public string Username { get; set; } 
+        public string UserEmail { get; set; }
+        public int PointValue { get; set; }
+        public IReadOnlyList<Achievements> Achievements { get; set; }
+    }
+}

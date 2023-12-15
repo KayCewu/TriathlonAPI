@@ -1,10 +1,7 @@
-﻿using CodeCollabra.Application.Repositories;
-using CodeCollabra.Domain;
-using CodeCollabra.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Http;
+﻿using CodeCollabra.Application.Feautures.Users.Queries.GetUserProfileDetail;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.IdentityModel.Tokens;
+
 
 namespace CodeCollabra.API.Controllers
 {
@@ -12,23 +9,20 @@ namespace CodeCollabra.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IGenericRepository<User> _repo;
-        public UserController(IGenericRepository<User> repo)
+        private readonly IMediator _mediator;
+
+        public UserController(IMediator mediator)
         {
-                _repo = repo;
+            _mediator = mediator;
         }
-        [HttpGet("GetUsers")]
-        public IEnumerable<User> GetAllUsers()
+
+        [HttpGet("UserProfileDetails/{id}")]
+        public async Task<ActionResult<GetUserProfileDetailsDTO>> GetUserProfileDetails(int id)
         {
-            var Users= _repo.GetAllAsync().Result;
-            if (!Users.IsNullOrEmpty())
-            {
-                return Users.ToList();
-            }
-            else
-            {
-                return null;
-            }
+            var userProfileDetails = await _mediator.Send(new GetUserProfileDetailsQuery { id = id });
+            return Ok(userProfileDetails);
         }
+
+        
     }
 }

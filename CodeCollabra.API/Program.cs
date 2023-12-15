@@ -1,3 +1,4 @@
+using CodeCollabra.Application;
 using CodeCollabra.Application.Repositories;
 using CodeCollabra.Domain;
 using CodeCollabra.Infrastructure;
@@ -6,6 +7,7 @@ using CodeCollabra.Infrastructure.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAppServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

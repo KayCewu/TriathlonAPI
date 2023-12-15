@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using CodeCollabra.Application.Repositories;
+using CodeCollabra.Infrastructure.Repositories;
 
 namespace CodeCollabra.Infrastructure
 {
@@ -15,6 +17,12 @@ namespace CodeCollabra.Infrastructure
             {
                 options.UseSqlServer(configuration.GetConnectionString("DatabaseConnectionString"));
             });
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAchievementsRepository, AchievementsRepository>();
+            services.AddScoped<IPointsRepository, PointsRepository>();
+
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;
