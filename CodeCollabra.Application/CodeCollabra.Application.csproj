@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,13 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Feautures\Users\Commands\**" />
+    <EmbeddedResource Remove="Feautures\Users\Commands\**" />
+    <None Remove="Feautures\Users\Commands\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
   </ItemGroup>
 
-
   <ItemGroup>
-    <Folder Include="Feautures\Users\Commands\" />
+    <ProjectReference Include="..\CodeCollabra.Domain\CodeCollabra.Domain.csproj" />
   </ItemGroup>
 
 </Project>

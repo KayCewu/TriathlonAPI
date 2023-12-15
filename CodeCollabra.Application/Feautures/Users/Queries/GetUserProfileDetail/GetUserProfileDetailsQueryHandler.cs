@@ -10,14 +10,14 @@ namespace CodeCollabra.Application.Feautures.Users.Queries.GetUserProfileDetail
         private readonly IUserRepository _userRepository;
         private readonly IAchievementsRepository _achievementsRepository;
 
-        public GetUserProfileDetailsQueryHandler(IPointsRepository pointsRepository, IUserRepository userRepository, IAchievementsRepository)
+        public GetUserProfileDetailsQueryHandler(IPointsRepository pointsRepository, IUserRepository userRepository, IAchievementsRepository achievementsRepository)
         {
-            _achievementsRepository = _achievementsRepository;
+            _achievementsRepository = achievementsRepository;
             _pointsRepository = pointsRepository;
             _userRepository = userRepository;
         }
 
-        async Task<GetUserProfileDetailsDTO> IRequestHandler<GetUserProfileDetailsQuery, GetUserProfileDetailsDTO>.Handle(GetUserProfileDetailsQuery request, CancellationToken cancellationToken)
+        public async Task<GetUserProfileDetailsDTO> Handle(GetUserProfileDetailsQuery request, CancellationToken cancellationToken)
         {
             try
             {
